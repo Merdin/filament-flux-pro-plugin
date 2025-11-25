@@ -6,10 +6,11 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/merdin/filament-flux-pro-plugin.svg?style=flat-square)](https://packagist.org/packages/merdin/filament-flux-pro-plugin)
 
 
-
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+This project is in `Alpha` state.
 
 ## Installation
+
+You need a [FluxUI Pro license](https://fluxui.dev/pricing) to use this project. I am also working on a plugin for the free components.
 
 You can install the package via composer:
 
