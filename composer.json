@@ -23,6 +23,8 @@
     "require": {
         "php": "^8.2",
         "filament/filament": "^4.0",
+        "livewire/flux": "^2.8",
+        "livewire/flux-pro": "^2.8",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
@@ -75,5 +77,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "flux-pro": {
+            "type": "composer",
+            "url": "https://composer.fluxui.dev"
+        }
+    }
 }
