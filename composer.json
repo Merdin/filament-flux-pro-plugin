@@ -40,6 +40,10 @@
         "rector/rector": "^2.0",
         "spatie/laravel-ray": "^1.26"
     },
+    "conflict": {
+        "livewire/flux": "<2.8",
+        "livewire/flux-pro": "<2.8"
+    },
     "autoload": {
         "psr-4": {
             "Merdin\\Filament\\Plugins\\FluxPro\\": "src/"
@@ -75,5 +79,11 @@
         }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "flux-pro": {
+            "type": "composer",
+            "url": "https://composer.fluxui.dev"
+        }
+    }
 }

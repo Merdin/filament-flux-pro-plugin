@@ -15,6 +15,9 @@ use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Merdin\Filament\Plugins\FluxPro\Commands\FluxProCommand;
 use Merdin\Filament\Plugins\FluxPro\Testing\TestsFluxPro;
+use Filament\Support\Facades\FilamentView;
+use Filament\View\PanelsRenderHook;
+use Illuminate\Support\Facades\Blade;
 
 class FluxProServiceProvider extends PackageServiceProvider
 {
@@ -32,6 +35,11 @@ class FluxProServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::BODY_END,
+            fn (): string => Blade::render('@fluxScripts'),
+        );
+
         // Testing
         // Testable::mixin(new TestsFluxPro);
     }
