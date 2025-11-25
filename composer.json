@@ -1,30 +1,28 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "merdin/filament-flux-pro-plugin",
+    "description": "A Filament plugin that contains FluxUI components to build beautiful products.",
     "keywords": [
-        ":vendor_name",
+        "Merdin",
         "laravel",
         "filamentphp",
-        ":package_slug"
+        "filament-flux-pro-plugin"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/merdin/filament-flux-pro-plugin",
     "support": {
-        "issues": "https://github.com/:vendor_slug/:package_slug/issues",
-        "source": "https://github.com/:vendor_slug/:package_slug"
+        "issues": "https://github.com/merdin/filament-flux-pro-plugin/issues",
+        "source": "https://github.com/merdin/filament-flux-pro-plugin"
     },
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Merdin",
+            "email": "me@merdin.dev",
             "role": "Developer"
         }
     ],
     "require": {
         "php": "^8.2",
         "filament/filament": "^4.0",
-        "filament/forms": "^4.0",
-        "filament/tables": "^4.0",
         "spatie/laravel-package-tools": "^1.15.0"
     },
     "require-dev": {
@@ -44,13 +42,12 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "Merdin\\Filament\\Plugins\\FluxPro\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/"
+            "Merdin\\Filament\\Plugins\\FluxPro\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -65,11 +62,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
-            }
+                "Merdin\\Filament\\Plugins\\FluxPro\\FluxProServiceProvider"
+            ]
         }
     },
     "config": {
