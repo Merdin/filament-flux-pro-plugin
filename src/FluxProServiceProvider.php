@@ -28,7 +28,7 @@ class FluxProServiceProvider extends PackageServiceProvider
     public function configurePackage(Package $package): void
     {
         $package->name(static::$name)
-            ->hasViews();
+            ->hasViews('filament-flux');
     }
 
     public function packageRegistered(): void {}
