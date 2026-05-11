@@ -1,6 +1,6 @@
 <?php
 
-namespace Merdin\Filament\Plugins\FluxPro;
+namespace Merdin\Filament\Plugins\Flux\Pro;
 
 use Filament\Contracts\Plugin;
 use Filament\Panel;
@@ -9,7 +9,7 @@ class FluxProPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'filament-flux-pro-plugin';
+        return 'filament-flux-pro';
     }
 
     public function register(Panel $panel): void

@@ -1,37 +1,34 @@
 <?php
 
-namespace Merdin\Filament\Plugins\FluxPro;
+namespace Merdin\Filament\Plugins\Flux\Pro;
 
 use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Js;
-use Filament\Support\Facades\FilamentAsset;
-use Filament\Support\Facades\FilamentIcon;
-use Illuminate\Filesystem\Filesystem;
-use Livewire\Features\SupportTesting\Testable;
-use Spatie\LaravelPackageTools\Commands\InstallCommand;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Merdin\Filament\Plugins\FluxPro\Commands\FluxProCommand;
-use Merdin\Filament\Plugins\FluxPro\Testing\TestsFluxPro;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
+use Livewire\Features\SupportTesting\Testable;
+use Merdin\Filament\Plugins\Flux\Pro\Testing\TestsFluxPro;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class FluxProServiceProvider extends PackageServiceProvider
 {
-    public static string $name = 'filament-flux-pro-plugin';
+    public static string $name = 'filament-flux-pro';
 
-    public static string $viewNamespace = 'filament-flux-pro-plugin';
+    public static string $viewNamespace = 'filament-flux-pro';
 
     public function configurePackage(Package $package): void
     {
         $package->name(static::$name)
-            ->hasViews('filament-flux');
+            ->hasViews('filament-flux-pro');
     }
 
-    public function packageRegistered(): void {}
+    public function packageRegistered(): void
+    {
+    }
 
     public function packageBooted(): void
     {
@@ -46,7 +43,7 @@ class FluxProServiceProvider extends PackageServiceProvider
 
     protected function getAssetPackageName(): ?string
     {
-        return 'merdin/filament-flux-pro-plugin';
+        return 'merdin/filament-flux-pro';
     }
 
     /**
@@ -98,8 +95,6 @@ class FluxProServiceProvider extends PackageServiceProvider
      */
     protected function getMigrations(): array
     {
-        return [
-            'create_filament-flux-pro-plugin_table',
-        ];
+        return [];
     }
 }

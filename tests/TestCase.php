@@ -1,6 +1,6 @@
 <?php
 
-namespace Merdin\Filament\Plugins\FluxPro\Tests;
+namespace Merdin\Filament\Plugins\Flux\Pro\Tests;
 
 use BladeUI\Heroicons\BladeHeroiconsServiceProvider;
 use BladeUI\Icons\BladeIconsServiceProvider;
@@ -16,10 +16,10 @@ use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
 use Livewire\LivewireServiceProvider;
+use Merdin\Filament\Plugins\Flux\Pro\FluxProServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
-use Merdin\Filament\Plugins\FluxPro\FluxProServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -31,7 +31,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Merdin\Filament\Plugins\\FluxPro\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Merdin\Filament\Plugins\\Flux\\Pro\\Database\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 

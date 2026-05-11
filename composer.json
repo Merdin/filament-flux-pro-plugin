@@ -5,6 +5,7 @@
         "Merdin",
         "laravel",
         "filamentphp",
+        "filament plugin",
         "filament-flux-pro-plugin"
     ],
     "homepage": "https://github.com/merdin/filament-flux-pro-plugin",
@@ -23,7 +24,8 @@
     "require": {
         "php": "^8.2",
         "filament/filament": "^4.0",
-        "spatie/laravel-package-tools": "^1.15.0"
+        "spatie/laravel-package-tools": "^1.15.0",
+        "livewire/flux":"^2.14"
     },
     "require-dev": {
         "larastan/larastan": "^3.0",
@@ -41,17 +43,16 @@
         "spatie/laravel-ray": "^1.26"
     },
     "conflict": {
-        "livewire/flux": "<2.8",
         "livewire/flux-pro": "<2.8"
     },
     "autoload": {
         "psr-4": {
-            "Merdin\\Filament\\Plugins\\FluxPro\\": "src/"
+            "Merdin\\Filament\\Plugins\\Flux\\Pro\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Merdin\\Filament\\Plugins\\FluxPro\\Tests\\": "tests/"
+            "Merdin\\Filament\\Plugins\\Flux\\Pro\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -66,7 +67,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Merdin\\Filament\\Plugins\\FluxPro\\FluxProServiceProvider"
+                "Merdin\\Filament\\Plugins\\Flux\\Pro\\FluxProServiceProvider"
             ]
         }
     },

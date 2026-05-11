@@ -1,6 +1,6 @@
 <?php
 
-// translations for Merdin\Filament\Plugins/FluxPro
+// translations for Merdin\Filament\Plugins/Flux/Pro
 return [
     //
 ];
