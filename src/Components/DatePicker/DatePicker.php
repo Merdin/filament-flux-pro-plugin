@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker;
 
-use Carbon\Carbon;
+use Carbon\CarbonInterface;
+use Closure;
 use Filament\Forms\Components\Field;
 use Flux\DateRange;
 use Illuminate\Support\Str;
@@ -22,8 +23,8 @@ class DatePicker extends Field
     protected ?int $minRange = null;
     protected ?int $maxRange = null;
 
-    protected ?string $min = null;
-    protected ?string $max = null;
+    protected CarbonInterface|Closure|null $min = null;
+    protected CarbonInterface|Closure|null $max = null;
 
     protected ?string $unavailable = null;
 
@@ -103,34 +104,38 @@ class DatePicker extends Field
         return $this->maxRange;
     }
 
-    public function min(Carbon $date): static
+    public function min(CarbonInterface|Closure $date): static
     {
-        $this->min = $date->toDateString();
+        $this->min = $date;
 
         return $this;
     }
 
     public function getMin(): ?string
     {
-        return $this->min;
+        $date = $this->evaluate($this->min);
+
+        return $date instanceof CarbonInterface ? $date->toDateString() : $date;
     }
 
-    public function max(Carbon $date): static
+    public function max(CarbonInterface|Closure $date): static
     {
-        $this->max = $date->toDateString();
+        $this->max = $date;
 
         return $this;
     }
 
     public function getMax(): ?string
     {
-        return $this->max;
+        $date = $this->evaluate($this->max);
+
+        return $date instanceof CarbonInterface ? $date->toDateString() : $date;
     }
 
     /**
-     * Should be a list of Carbon dates
+     * Should be a list of CarbonInterface dates
      *
-     * @param array<int, Carbon> $listOfDates
+     * @param array<int, CarbonInterface> $listOfDates
      */
     public function unavailable(array $listOfDates): static
     {
@@ -145,7 +150,7 @@ class DatePicker extends Field
         return $this->unavailable;
     }
 
-    public function openTo(Carbon $date): static
+    public function openTo(CarbonInterface $date): static
     {
         $this->openTo = $date->toIso8601String();
 
