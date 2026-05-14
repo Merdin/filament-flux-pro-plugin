@@ -18,6 +18,17 @@ You can install the package via composer:
 composer require merdin/filament-flux-pro-plugin:dev-main
 ```
 
+You need to add the following in your `composer.json`:
+
+```json
+"repositories": {
+        "flux-pro": {
+            "type": "composer",
+            "url": "https://composer.fluxui.dev"
+        }
+    }
+```
+
 ## Usage
 TBD
 
