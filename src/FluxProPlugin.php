@@ -9,7 +9,7 @@ class FluxProPlugin implements Plugin
 {
     public function getId(): string
     {
-        return 'filament-flux-pro';
+        return 'flux-pro';
     }
 
     public function register(Panel $panel): void
@@ -29,9 +29,7 @@ class FluxProPlugin implements Plugin
 
     public static function get(): static
     {
-        /** @var static $plugin */
-        $plugin = filament(app(static::class)->getId());
-
-        return $plugin;
+        /** @var static */
+        return filament(app(static::class)->getId());
     }
 }
