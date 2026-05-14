@@ -2,4 +2,4 @@
 
 use Merdin\Filament\Plugins\Flux\Pro\Tests\TestCase;
 
-uses(TestCase::class)->in(__DIR__);
+pest()->extend(TestCase::class)->in(__DIR__);
