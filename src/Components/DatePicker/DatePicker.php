@@ -7,12 +7,13 @@ namespace Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker;
 use Carbon\Carbon;
 use Filament\Forms\Components\Field;
 use Illuminate\Support\Str;
+use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Mode;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Type;
 
 class DatePicker extends Field
 {
     protected ?Type $type = null;
-    protected string $mode = 'single'; // todo: add enum
+    protected ?Mode $mode = null;
 
     protected ?string $min = null;
     protected ?string $max = null;
@@ -51,7 +52,7 @@ class DatePicker extends Field
     }
 
     // todo: we should handle range mode
-    private function mode(string $mode = 'single'): static
+    private function mode(Mode $mode): static
     {
         $this->mode = $mode;
 
@@ -60,7 +61,7 @@ class DatePicker extends Field
 
     public function getMode(): string
     {
-        return $this->mode;
+        return $this->mode ?? Mode::default()->value;
     }
 
 
