@@ -1,7 +1,7 @@
 <x-dynamic-component :component="$getFieldWrapperView()" :field="$field">
 
     <div x-data="{ state: $wire.{{ $applyStateBindingModifiers("\$entangle('{$getStatePath()}')") }} }">
-        <x-flux::date-picker x-model="state" type={{ $getType() }} mode={{ $getMode() }}
+        <x-flux::date-picker x-model="state" type="{{ $getType() }}" mode="{{ $getMode() }}"
             @if ($getWeekNumbers()) week-numbers @endif @if ($getFixedWeeks()) fixed-weeks @endif
             @if ($getWithToday()) with-today @endif
             @if ($getSelectableHeader()) selectable-header @endif

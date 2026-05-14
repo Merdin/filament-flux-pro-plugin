@@ -146,12 +146,12 @@ it('can render the date picker', function () {
 
 it('renders the date picker with type button by default', function () {
     livewire(DatePickerForm::class)
-        ->assertSeeHtml('type=button');
+        ->assertSeeHtml("type=\"button\"");
 });
 
 it('renders the date picker with mode single by default', function () {
     livewire(DatePickerForm::class)
-        ->assertSeeHtml('mode=single');
+    ->assertSeeHtml("mode=\"single\"");
 });
 
 it('renders the date picker without min date when not set', function () {
