@@ -32,10 +32,10 @@ class FluxProServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::BODY_END,
-            fn (): string => Blade::render('@fluxScripts'),
-        );
+        // FilamentView::registerRenderHook(
+        //     PanelsRenderHook::BODY_END,
+        //     fn (): string => Blade::render('@fluxScripts'),
+        // );
 
         // Testing
         // Testable::mixin(new TestsFluxPro);
