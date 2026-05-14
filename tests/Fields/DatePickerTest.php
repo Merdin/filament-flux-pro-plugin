@@ -291,10 +291,6 @@ it('renders the date picker without start-day', function () {
         ->assertDontSeeHtml('start-day=');
 });
 
-it('opens the date picker on start-day based on users locale when not set', function () {
-})
-->todo('research how we can test this in the ui');
-
 it('renders the date picker with start-day when set', function () {
     $startDay = 1;
 
