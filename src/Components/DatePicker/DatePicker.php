@@ -45,7 +45,7 @@ class DatePicker extends Field
     protected bool $selectableHeader = false;
     protected bool $invalid = false;
 
-    protected string $view = 'filament-flux-pro::date-picker';
+    protected string $view = 'filament-flux-pro::components.date-picker.date-picker';
 
     public function type(Type $type): static
     {
