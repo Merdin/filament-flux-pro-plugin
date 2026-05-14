@@ -7,10 +7,11 @@ namespace Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker;
 use Carbon\Carbon;
 use Filament\Forms\Components\Field;
 use Illuminate\Support\Str;
+use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Type;
 
 class DatePicker extends Field
 {
-    protected string $type = 'button'; // todo: add enum
+    protected ?Type $type = null;
     protected string $mode = 'single'; // todo: add enum
 
     protected ?string $min = null;
@@ -37,7 +38,7 @@ class DatePicker extends Field
 
     protected string $view = 'filament-flux-pro::date-picker';
 
-    public function type(string $type): static
+    public function type(Type $type): static
     {
         $this->type = $type;
 
@@ -46,7 +47,7 @@ class DatePicker extends Field
 
     public function getType(): string
     {
-        return $this->type;
+        return $this->type?->value ?? Type::default()->value;
     }
 
     // todo: we should handle range mode
