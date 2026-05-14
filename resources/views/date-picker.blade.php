@@ -18,7 +18,9 @@
             @if ($getWithPresets()) presets="{{ $getPresets() }}" @endif
             @if ($getClearable()) clearable @endif @if ($isDisabled()) disabled @endif
             @if ($getInvalid()) invalid @endif
-            @if (filled($getLocale)) locale="{{ $getLocale() }}" @endif />
+            @if (filled($getLocale)) locale="{{ $getLocale() }}" @endif
+            @if (filled($getMinRange())) min-range="{{ $getMinRange() }}" @endif
+            @if (filled($getMaxRange())) max-range="{{ $getMaxRange() }}" @endif />
     </div>
 
 </x-dynamic-component>

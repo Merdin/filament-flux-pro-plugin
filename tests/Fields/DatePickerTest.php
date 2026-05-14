@@ -12,6 +12,8 @@ class DatePickerForm extends FormsComponent
 {
     public ?Carbon $min = null;
     public ?Carbon $max = null;
+    public ?int $minRange = null;
+    public ?int $maxRange = null;
     public ?array $unavailable = null;
     public ?Carbon $openTo = null;
     public ?bool $forceOpenTo = null;
@@ -49,6 +51,14 @@ class DatePickerForm extends FormsComponent
 
         if ($this->max) {
             $field->max(Carbon::parse($this->max));
+        }
+
+        if ($this->minRange) {
+            $field->minRange($this->minRange);
+        }
+
+        if ($this->maxRange) {
+            $field->maxRange($this->maxRange);
         }
 
         if ($this->unavailable) {
@@ -140,9 +150,7 @@ it('renders the date picker with mode single by default', function () {
 });
 
 it('renders the date picker without min date when not set', function () {
-    $date = null;
-
-    livewire(DatePickerForm::class, ['min' => $date])
+    livewire(DatePickerForm::class, [])
         ->assertDontSeeHtml('min=');
 });
 
@@ -154,9 +162,7 @@ it('renders the date picker with min date when set', function () {
 });
 
 it('renders the date picker without max date when not set', function () {
-    $date = null;
-
-    livewire(DatePickerForm::class, ['max' => $date])
+    livewire(DatePickerForm::class, [])
         ->assertDontSeeHtml('max=');
 });
 
@@ -165,6 +171,30 @@ it('renders the date picker with max date when set', function () {
 
     livewire(DatePickerForm::class, ['max' => $date])
         ->assertSeeHtml("max=\"{$date->toDateString()}\"");
+});
+
+it('renders the date picker without min-range when not set', function () {
+    livewire(DatePickerForm::class, [])
+        ->assertDontSeeHtml('min-range=');
+});
+
+it('renders the date picker with min-range when set', function () {
+    $minRange = 1;
+
+    livewire(DatePickerForm::class, ['minRange' => $minRange])
+        ->assertSeeHtml("min-range=\"{$minRange}\"");
+});
+
+it('renders the date picker without max-range when not set', function () {
+    livewire(DatePickerForm::class, [])
+        ->assertDontSeeHtml('max-range=');
+});
+
+it('renders the date picker with max-range when set', function () {
+    $maxRange = 1;
+
+    livewire(DatePickerForm::class, ['maxRange' => $maxRange])
+        ->assertSeeHtml("max-range=\"{$maxRange}\"");
 });
 
 it('renders the date picker without unavailable when not set', function () {

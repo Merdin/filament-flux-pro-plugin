@@ -7,6 +7,7 @@ namespace Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker;
 use Carbon\Carbon;
 use Filament\Forms\Components\Field;
 use Illuminate\Support\Str;
+use Flux\DateRange;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Mode;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Type;
 
@@ -14,6 +15,9 @@ class DatePicker extends Field
 {
     protected ?Type $type = null;
     protected ?Mode $mode = null;
+    protected ?DateRange $range = null;
+    protected ?int $minRange = null;
+    protected ?int $maxRange = null;
 
     protected ?string $min = null;
     protected ?string $max = null;
@@ -64,15 +68,36 @@ class DatePicker extends Field
         return $this->mode ?? Mode::default()->value;
     }
 
-
-    private function minRange(int $numberOfDays): void
+    public function range(DateRange $range): static
     {
-        // todo
+        $this->range = $range;
+
+        return $this;
     }
 
-    private function maxRange(int $numberOfDays): void
+
+    public function minRange(int $numberOfDays): static
     {
-        // todo
+        $this->minRange = $numberOfDays;
+
+        return $this;
+    }
+
+    public function getMinRange(): ?int
+    {
+        return $this->minRange;
+    }
+
+    public function maxRange(int $numberOfDays): static
+    {
+        $this->maxRange = $numberOfDays;
+
+        return $this;
+    }
+
+    public function getMaxRange(): ?int
+    {
+        return $this->maxRange;
     }
 
     public function min(Carbon $date): static
