@@ -5,6 +5,8 @@ use Filament\Forms\FormsComponent;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Str;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\DatePicker;
+use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Helpers\Presets\Builder as PresetBuilder;
+use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Helpers\Presets\Preset;
 
 use function Pest\Livewire\livewire;
 
@@ -106,7 +108,10 @@ class DatePickerForm extends FormsComponent
         }
 
         if ($this->todayPreset) {
-            $field->presets(today: $this->todayPreset);
+            $builder = new PresetBuilder();
+            $builder->add(new Preset\Today());
+
+            $field->presets($builder);
         }
 
         if ($this->clearable) {

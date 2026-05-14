@@ -6,10 +6,13 @@ namespace Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker;
 
 use Carbon\Carbon;
 use Filament\Forms\Components\Field;
-use Illuminate\Support\Str;
 use Flux\DateRange;
+use Illuminate\Support\Str;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Mode;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Type;
+use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Helpers\Presets\Concerns\PresetInterface;
+use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Helpers\Presets\Builder as PresetBuilder;
+use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Helpers\Presets\Preset;
 
 class DatePicker extends Field
 {
@@ -35,7 +38,7 @@ class DatePicker extends Field
     protected bool|string|null $withInputs = null;
     protected bool $withConfirmation = false;
     protected bool $withPresets = false;
-    protected ?string $presets = null;
+    protected ?PresetBuilder $presets = null;
     protected ?string $locale = null;
     protected bool $clearable = false;
     protected bool $selectableHeader = false;
@@ -282,46 +285,9 @@ class DatePicker extends Field
         return $this->withPresets;
     }
 
-    public function presets(
-        bool $today = false,
-        bool $yesterday = false,
-        bool $thisWeek = false,
-        bool $last7Days = false,
-        bool $thisMonth = false,
-        bool $thisYearToDate = false,
-        bool $allTime = false
-    ): static {
-        $presetsString = Str::of('');
-
-        if ($today) {
-            $presetsString = $presetsString->append('today ');
-        }
-
-        if ($yesterday) {
-            $presetsString = $presetsString->append('yesterday ');
-        }
-
-        if ($thisWeek) {
-            $presetsString = $presetsString->append('thisWeek ');
-        }
-
-        if ($last7Days) {
-            $presetsString = $presetsString->append('last7Days ');
-        }
-
-        if ($thisMonth) {
-            $presetsString = $presetsString->append('thisMonth ');
-        }
-
-        if ($thisYearToDate) {
-            $presetsString = $presetsString->append('thisYearToDate ');
-        }
-
-        if ($allTime) {
-            $presetsString = $presetsString->append('allTime');
-        }
-
-        $this->presets = $presetsString->trim()->toString();
+    public function presets(PresetBuilder $builder): static
+    {
+        $this->presets = $builder;
 
         return $this;
     }
@@ -329,18 +295,19 @@ class DatePicker extends Field
     public function getPresets(): string
     {
         if (empty($this->presets)) {
-            $this->presets(
-                today: true,
-                yesterday: true,
-                thisWeek: true,
-                last7Days: true,
-                thisMonth: true,
-                thisYearToDate: true,
-                allTime: true
-            );
+            $builder = new PresetBuilder();
+            $builder->add(new Preset\Today());
+            $builder->add(new Preset\Yesterday());
+            $builder->add(new Preset\ThisWeek());
+            $builder->add(new Preset\Last7Days());
+            $builder->add(new Preset\ThisMonth());
+            $builder->add(new Preset\ThisYearToDate());
+            $builder->add(new Preset\AllTime());
+
+            $this->presets($builder);
         }
 
-        return $this->presets;
+        return $this->presets->toString();
     }
 
     public function clearable(bool $condition = true): static
