@@ -364,9 +364,9 @@ class DatePicker extends Field
         return $this;
     }
 
-    public function getLocale(): string
+    public function getLocale(): ?string
     {
-        return $this->locale ?? app()->getLocale();
+        return $this->locale;
     }
 
     public function fixedWeeks(bool $condition = true): static
