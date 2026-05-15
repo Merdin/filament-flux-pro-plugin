@@ -37,7 +37,7 @@ class DatePicker extends Field
 
     protected ?int $months = null;
 
-    protected string $size = 'default';
+    protected ?string $size = null;
 
     protected ?int $startDay = null;
 
@@ -72,9 +72,9 @@ class DatePicker extends Field
         return $this;
     }
 
-    public function getType(): string
+    public function getType(): ?string
     {
-        return $this->type?->value ?? Type::default()->value;
+        return $this->type?->value;
     }
 
     // todo: we should handle range mode
@@ -85,9 +85,9 @@ class DatePicker extends Field
         return $this;
     }
 
-    public function getMode(): string
+    public function getMode(): ?string
     {
-        return $this->mode?->value ?? Mode::default()->value;
+        return $this->mode?->value;
     }
 
     public function range(DateRange $range): static
@@ -175,9 +175,9 @@ class DatePicker extends Field
         return $this;
     }
 
-    public function getOpenTo(): string
+    public function getOpenTo(): ?string
     {
-        return $this->openTo ?? now()->toDateString();
+        return $this->openTo;
     }
 
     public function forceOpenTo(bool $condition = true): static
@@ -199,7 +199,7 @@ class DatePicker extends Field
         return $this;
     }
 
-    public function getMonths(): int
+    public function getMonths(): ?int
     {
         if ($this->getMode() === 'single') {
             $this->months = 1;
@@ -219,7 +219,7 @@ class DatePicker extends Field
         return $this;
     }
 
-    public function getSize(): string
+    public function getSize(): ?string
     {
         return $this->size;
     }
@@ -318,14 +318,14 @@ class DatePicker extends Field
     public function getPresets(): string
     {
         if (empty($this->presets)) {
-            $builder = new PresetBuilder;
-            $builder->add(new Preset\Today);
-            $builder->add(new Preset\Yesterday);
-            $builder->add(new Preset\ThisWeek);
-            $builder->add(new Preset\Last7Days);
-            $builder->add(new Preset\ThisMonth);
-            $builder->add(new Preset\ThisYearToDate);
-            $builder->add(new Preset\AllTime);
+            $builder = new PresetBuilder();
+            $builder->add(new Preset\Today());
+            $builder->add(new Preset\Yesterday());
+            $builder->add(new Preset\ThisWeek());
+            $builder->add(new Preset\Last7Days());
+            $builder->add(new Preset\ThisMonth());
+            $builder->add(new Preset\ThisYearToDate());
+            $builder->add(new Preset\AllTime());
 
             $this->presets($builder);
         }
