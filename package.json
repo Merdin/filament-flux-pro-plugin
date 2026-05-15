@@ -2,10 +2,14 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "dev": "node bin/build.js --dev",
-        "build": "node bin/build.js"
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "vite": "^6.0"
     },
     "devDependencies": {
+        "@tailwindcss/vite": "^4.1.14",
         "esbuild": "^0.25.5",
         "prettier": "^3.5.3"
     }
