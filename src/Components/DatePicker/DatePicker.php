@@ -317,14 +317,14 @@ class DatePicker extends Field
     public function getPresets(): string
     {
         if (empty($this->presets)) {
-            $builder = new PresetBuilder;
-            $builder->add(new Preset\Today);
-            $builder->add(new Preset\Yesterday);
-            $builder->add(new Preset\ThisWeek);
-            $builder->add(new Preset\Last7Days);
-            $builder->add(new Preset\ThisMonth);
-            $builder->add(new Preset\ThisYearToDate);
-            $builder->add(new Preset\AllTime);
+            $builder = new PresetBuilder();
+            $builder->add(new Preset\Today());
+            $builder->add(new Preset\Yesterday());
+            $builder->add(new Preset\ThisWeek());
+            $builder->add(new Preset\Last7Days());
+            $builder->add(new Preset\ThisMonth());
+            $builder->add(new Preset\ThisYearToDate());
+            $builder->add(new Preset\AllTime());
 
             $this->presets($builder);
         }
@@ -363,9 +363,9 @@ class DatePicker extends Field
         return $this;
     }
 
-    public function getLocale(): ?string
+    public function getLocale(): string
     {
-        return $this->locale;
+        return $this->locale ?? app()->getLocale();
     }
 
     public function fixedWeeks(bool $condition = true): static
