@@ -87,7 +87,7 @@ class DatePicker extends Field
 
     public function getMode(): string
     {
-        return $this->mode ?? Mode::default()->value;
+        return $this->mode?->value ?? Mode::default()->value;
     }
 
     public function range(DateRange $range): static
@@ -175,9 +175,9 @@ class DatePicker extends Field
         return $this;
     }
 
-    public function getOpenTo(): ?string
+    public function getOpenTo(): string
     {
-        return $this->openTo;
+        return $this->openTo ?? now()->toDateString();
     }
 
     public function forceOpenTo(bool $condition = true): static
@@ -364,9 +364,9 @@ class DatePicker extends Field
         return $this;
     }
 
-    public function getLocale(): ?string
+    public function getLocale(): string
     {
-        return $this->locale;
+        return $this->locale ?? app()->getLocale();
     }
 
     public function fixedWeeks(bool $condition = true): static
