@@ -317,14 +317,14 @@ class DatePicker extends Field
     public function getPresets(): string
     {
         if (empty($this->presets)) {
-            $builder = new PresetBuilder();
-            $builder->add(new Preset\Today());
-            $builder->add(new Preset\Yesterday());
-            $builder->add(new Preset\ThisWeek());
-            $builder->add(new Preset\Last7Days());
-            $builder->add(new Preset\ThisMonth());
-            $builder->add(new Preset\ThisYearToDate());
-            $builder->add(new Preset\AllTime());
+            $builder = new PresetBuilder;
+            $builder->add(new Preset\Today);
+            $builder->add(new Preset\Yesterday);
+            $builder->add(new Preset\ThisWeek);
+            $builder->add(new Preset\Last7Days);
+            $builder->add(new Preset\ThisMonth);
+            $builder->add(new Preset\ThisYearToDate);
+            $builder->add(new Preset\AllTime);
 
             $this->presets($builder);
         }
