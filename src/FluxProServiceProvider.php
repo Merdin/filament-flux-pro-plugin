@@ -26,9 +26,7 @@ class FluxProServiceProvider extends PackageServiceProvider
             ->hasViews('filament-flux-pro');
     }
 
-    public function packageRegistered(): void
-    {
-    }
+    public function packageRegistered(): void {}
 
     public function packageBooted(): void
     {

@@ -13,24 +13,43 @@ use function Pest\Livewire\livewire;
 class DatePickerForm extends FormsComponent
 {
     public ?Carbon $min = null;
+
     public ?Carbon $max = null;
+
     public ?int $minRange = null;
+
     public ?int $maxRange = null;
+
     public ?array $unavailable = null;
+
     public ?Carbon $openTo = null;
+
     public ?bool $forceOpenTo = null;
+
     public ?string $size = null;
+
     public ?int $startDay = null;
+
     public ?bool $weekNumbers = null;
+
     public ?bool $selectableHeader = null;
+
     public ?bool $withToday = null;
-    public bool|string|null $withInputs = null;
+
+    public bool | string | null $withInputs = null;
+
     public ?bool $withConfirmation = null;
+
     public ?bool $withPresets = null;
+
     public ?bool $todayPreset = null; // preset
+
     protected ?bool $clearable = null;
+
     protected ?bool $disabled = null;
+
     protected ?bool $invalid = null;
+
     public ?string $locale = null;
 
     public function mount(
@@ -108,8 +127,8 @@ class DatePickerForm extends FormsComponent
         }
 
         if ($this->todayPreset) {
-            $builder = new PresetBuilder();
-            $builder->add(new Preset\Today());
+            $builder = new PresetBuilder;
+            $builder->add(new Preset\Today);
 
             $field->presets($builder);
         }
@@ -146,12 +165,12 @@ it('can render the date picker', function () {
 
 it('renders the date picker with type button by default', function () {
     livewire(DatePickerForm::class)
-        ->assertSeeHtml("type=\"button\"");
+        ->assertSeeHtml('type="button"');
 });
 
 it('renders the date picker with mode single by default', function () {
     livewire(DatePickerForm::class)
-    ->assertSeeHtml("mode=\"single\"");
+        ->assertSeeHtml('mode="single"');
 });
 
 it('renders the date picker without min date when not set', function () {
@@ -206,7 +225,7 @@ it('renders the date picker without unavailable when not set', function () {
     $unavailable = null;
 
     livewire(DatePickerForm::class, ['unavailable' => $unavailable])
-        ->assertDontSeeHtml("unavailable=");
+        ->assertDontSeeHtml('unavailable=');
 });
 
 it('renders the date picker with unavailable when set', function () {
@@ -247,15 +266,14 @@ it('renders the date picker with force-open-to when set', function () {
 
 it('renders the date picker with 1 month by default in single mode', function () {
     livewire(DatePickerForm::class, [])
-        ->assertSeeHtml("months=\"1\"");
+        ->assertSeeHtml('months="1"');
 });
 
-it('renders the date picker with 2 months by default in range mode', function () {
-})->skip('Not supporting range yet');
+it('renders the date picker with 2 months by default in range mode', function () {})->skip('Not supporting range yet');
 
 it('renders the date picker with default size when not set', function () {
     livewire(DatePickerForm::class, [])
-        ->assertSeeHtml("size=\"default\"");
+        ->assertSeeHtml('size="default"');
 });
 
 it('renders the date picker with sm size when is set', function () {
@@ -388,10 +406,10 @@ it('renders the date picker default presets when with-presets is set', function 
 it('renders the date picker today preset when `today`-preset is set', function () {
     livewire(DatePickerForm::class, [
         'withPresets' => true,
-        'todayPreset' => true
-        ])
+        'todayPreset' => true,
+    ])
         ->assertSeeHtml('with-presets')
-        ->assertSeeHtml("presets=\"today\"");
+        ->assertSeeHtml('presets="today"');
 });
 
 it('renders the date picker without clearable when not set', function () {
@@ -426,7 +444,7 @@ it('renders the date picker with invalid when set', function () {
 
 it('renders with default locale when not set', function () {
     livewire(DatePickerForm::class)
-        ->assertSeeHtml("&quot;locale&quot;:null");
+        ->assertSeeHtml('&quot;locale&quot;:null');
 });
 
 it('renders with locale en-US when set', function () {

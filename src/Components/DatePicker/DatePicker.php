@@ -8,41 +8,59 @@ use Carbon\CarbonInterface;
 use Closure;
 use Filament\Forms\Components\Field;
 use Flux\DateRange;
-use Illuminate\Support\Str;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Mode;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Type;
-use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Helpers\Presets\Concerns\PresetInterface;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Helpers\Presets\Builder as PresetBuilder;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Helpers\Presets\Preset;
 
 class DatePicker extends Field
 {
     protected ?Type $type = null;
+
     protected ?Mode $mode = null;
+
     protected ?DateRange $range = null;
+
     protected ?int $minRange = null;
+
     protected ?int $maxRange = null;
 
-    protected CarbonInterface|Closure|null $min = null;
-    protected CarbonInterface|Closure|null $max = null;
+    protected CarbonInterface | Closure | null $min = null;
+
+    protected CarbonInterface | Closure | null $max = null;
 
     protected ?string $unavailable = null;
 
     protected ?string $openTo = null;
+
     protected bool $forceOpenTo = false;
+
     protected ?int $months = null;
+
     protected string $size = 'default';
+
     protected ?int $startDay = null;
+
     protected bool $weekNumbers = false;
+
     protected bool $fixedWeeks = false;
+
     protected bool $withToday = false;
-    protected bool|string|null $withInputs = null;
+
+    protected bool | string | null $withInputs = null;
+
     protected bool $withConfirmation = false;
+
     protected bool $withPresets = false;
+
     protected ?PresetBuilder $presets = null;
+
     protected ?string $locale = null;
+
     protected bool $clearable = false;
+
     protected bool $selectableHeader = false;
+
     protected bool $invalid = false;
 
     protected string $view = 'filament-flux-pro::components.date-picker.date-picker';
@@ -75,10 +93,10 @@ class DatePicker extends Field
     public function range(DateRange $range): static
     {
         $this->range = $range;
+        $this->mode(Mode::range);
 
         return $this;
     }
-
 
     public function minRange(int $numberOfDays): static
     {
@@ -104,7 +122,7 @@ class DatePicker extends Field
         return $this->maxRange;
     }
 
-    public function min(CarbonInterface|Closure $date): static
+    public function min(CarbonInterface | Closure $date): static
     {
         $this->min = $date;
 
@@ -118,7 +136,7 @@ class DatePicker extends Field
         return $date instanceof CarbonInterface ? $date->toDateString() : $date;
     }
 
-    public function max(CarbonInterface|Closure $date): static
+    public function max(CarbonInterface | Closure $date): static
     {
         $this->max = $date;
 
@@ -135,7 +153,7 @@ class DatePicker extends Field
     /**
      * Should be a list of CarbonInterface dates
      *
-     * @param array<int, CarbonInterface> $listOfDates
+     * @param  array<int, CarbonInterface>  $listOfDates
      */
     public function unavailable(array $listOfDates): static
     {
@@ -254,14 +272,14 @@ class DatePicker extends Field
         return $this->withToday;
     }
 
-    public function withInputs(bool|string $conditionOrOption = true): static
+    public function withInputs(bool | string $conditionOrOption = true): static
     {
         $this->withInputs = $conditionOrOption;
 
         return $this;
     }
 
-    public function getWithInputs(): bool|string|null
+    public function getWithInputs(): bool | string | null
     {
         return $this->withInputs;
     }
@@ -300,14 +318,14 @@ class DatePicker extends Field
     public function getPresets(): string
     {
         if (empty($this->presets)) {
-            $builder = new PresetBuilder();
-            $builder->add(new Preset\Today());
-            $builder->add(new Preset\Yesterday());
-            $builder->add(new Preset\ThisWeek());
-            $builder->add(new Preset\Last7Days());
-            $builder->add(new Preset\ThisMonth());
-            $builder->add(new Preset\ThisYearToDate());
-            $builder->add(new Preset\AllTime());
+            $builder = new PresetBuilder;
+            $builder->add(new Preset\Today);
+            $builder->add(new Preset\Yesterday);
+            $builder->add(new Preset\ThisWeek);
+            $builder->add(new Preset\Last7Days);
+            $builder->add(new Preset\ThisMonth);
+            $builder->add(new Preset\ThisYearToDate);
+            $builder->add(new Preset\AllTime);
 
             $this->presets($builder);
         }
