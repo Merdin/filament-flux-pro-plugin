@@ -9,7 +9,7 @@
             :fixed-weeks="$getFixedWeeks() ?: null"
             :with-today="$getWithToday() ?: null"
             :selectable-header="$getSelectableHeader() ?: null"
-            open-to="{{ $getOpenTo() }}"
+            :open-to="$getOpenTo()"
             :force-open-to="$getForceOpenTo() ?: null"
             :min="$getMin()"
             :max="$getMax()"
@@ -24,7 +24,7 @@
             :clearable="$getClearable() ?: null"
             :disabled="$isDisabled() ?: null"
             :invalid="$getInvalid() ?: null"
-            locale="{{ $getLocale() }}"
+            :locale="$getLocale()"
             :min-range="$getMinRange()"
             :max-range="$getMaxRange()"
         />
