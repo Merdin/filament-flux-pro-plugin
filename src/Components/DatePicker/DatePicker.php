@@ -77,8 +77,7 @@ class DatePicker extends Field
         return $this->type?->value;
     }
 
-    // todo: we should handle range mode
-    private function mode(Mode $mode): static
+    public function mode(Mode $mode): static
     {
         $this->mode = $mode;
 
