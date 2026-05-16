@@ -323,7 +323,7 @@ class DatePicker extends Field
             $builder->add(new Preset\ThisWeek());
             $builder->add(new Preset\Last7Days());
             $builder->add(new Preset\ThisMonth());
-            $builder->add(new Preset\ThisYearToDate());
+            $builder->add(new Preset\YearToDate());
             $builder->add(new Preset\AllTime());
 
             $this->presets($builder);
