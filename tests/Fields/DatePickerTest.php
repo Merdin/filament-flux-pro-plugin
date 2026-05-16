@@ -127,8 +127,8 @@ class DatePickerForm extends FormsComponent
         }
 
         if ($this->todayPreset) {
-            $builder = new PresetBuilder();
-            $builder->add(new Preset\Today());
+            $builder = new PresetBuilder;
+            $builder->add(new Preset\Today);
 
             $field->presets($builder);
         }
@@ -269,8 +269,7 @@ it('renders the date picker with 1 month by default in single mode', function ()
         ->assertSeeHtml('months="1"');
 });
 
-it('renders the date picker with 2 months by default in range mode', function () {
-})->skip('Not supporting range yet');
+it('renders the date picker with 2 months by default in range mode', function () {})->skip('Not supporting range yet');
 
 it('renders the date picker with default size when not set', function () {
     livewire(DatePickerForm::class, [])

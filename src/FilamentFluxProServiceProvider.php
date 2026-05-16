@@ -2,19 +2,14 @@
 
 namespace Merdin\Filament\Plugins\Flux\Pro;
 
-use Filament\Support\Assets\AlpineComponent;
 use Filament\Support\Assets\Asset;
-use Filament\Support\Assets\Css;
-use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
-use Livewire\Features\SupportTesting\Testable;
-use Merdin\Filament\Plugins\Flux\Pro\Testing\TestsFluxPro;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
-class FluxProServiceProvider extends PackageServiceProvider
+class FilamentFluxProServiceProvider extends PackageServiceProvider
 {
     public static string $name = 'filament-flux-pro';
 
@@ -30,10 +25,10 @@ class FluxProServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
-        // FilamentView::registerRenderHook(
-        //     PanelsRenderHook::BODY_END,
-        //     fn (): string => Blade::render('@fluxScripts'),
-        // );
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::BODY_END,
+            fn (): string => Blade::render('@fluxScripts'),
+        );
 
         // Testing
         // Testable::mixin(new TestsFluxPro);

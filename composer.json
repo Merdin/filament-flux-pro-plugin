@@ -67,7 +67,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Merdin\\Filament\\Plugins\\Flux\\Pro\\FluxProServiceProvider"
+                "Merdin\\Filament\\Plugins\\Flux\\Pro\\FilamentFluxProServiceProvider"
             ]
         }
     },
