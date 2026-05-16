@@ -169,8 +169,9 @@ class DatePicker extends Field
         return $this->unavailable;
     }
 
-    public function openTo(CarbonInterface $date): static
+    public function openTo(CarbonInterface $date, bool $force = false): static
     {
+        $this->forceOpenTo($force);
         $this->openTo = $date->toIso8601String();
 
         return $this;
@@ -181,7 +182,7 @@ class DatePicker extends Field
         return $this->openTo;
     }
 
-    public function forceOpenTo(bool $condition = true): static
+    private function forceOpenTo(bool $condition = true): static
     {
         $this->forceOpenTo = $condition;
 
