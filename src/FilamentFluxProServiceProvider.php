@@ -8,6 +8,7 @@ use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
 use Merdin\Filament\Plugins\Flux\Pro\Layouts\Header\Header;
+use Merdin\Filament\Plugins\Flux\Pro\Layouts\Sidebar\Sidebar;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -28,6 +29,7 @@ class FilamentFluxProServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         Livewire::component('filament-flux-pro::header', Header::class);
+        Livewire::component('filament-flux-pro::sidebar', Sidebar::class);
 
         FilamentView::registerRenderHook(
             PanelsRenderHook::BODY_END,

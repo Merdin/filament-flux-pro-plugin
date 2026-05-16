@@ -18,26 +18,15 @@
                             $childItems = $item->getChildItems();
                         @endphp
 
-                        <x-flux::navmenu.item
-                            :icon="$resolveItemIcon($item)"
-                            :href="$item->getUrl()"
-                            :target="$item->shouldOpenUrlInNewTab() ? '_blank' : null"
-                            :current="$item->isActive()"
-                            :badge="$item->getBadge()"
-                        >
+                        <x-flux::navmenu.item :icon="$resolveItemIcon($item)" :href="$item->getUrl()" :target="$item->shouldOpenUrlInNewTab() ? '_blank' : null" :current="$item->isActive()"
+                            :badge="$item->getBadge()">
                             {{ $item->getLabel() }}
                         </x-flux::navmenu.item>
 
                         @foreach ($childItems as $child)
                             @if ($child->isVisible())
-                                <x-flux::navmenu.item
-                                    :icon="$resolveItemIcon($child)"
-                                    :href="$child->getUrl()"
-                                    :target="$child->shouldOpenUrlInNewTab() ? '_blank' : null"
-                                    :current="$child->isActive()"
-                                    :badge="$child->getBadge()"
-                                    class="pl-8"
-                                >
+                                <x-flux::navmenu.item :icon="$resolveItemIcon($child)" :href="$child->getUrl()" :target="$child->shouldOpenUrlInNewTab() ? '_blank' : null"
+                                    :current="$child->isActive()" :badge="$child->getBadge()" class="pl-8">
                                     {{ $child->getLabel() }}
                                 </x-flux::navmenu.item>
                             @endif
@@ -49,13 +38,8 @@
     @else
         @foreach ($groupItems as $item)
             @if ($item->isVisible())
-                <x-flux::navbar.item
-                    :icon="$resolveItemIcon($item)"
-                    :href="$item->getUrl()"
-                    :target="$item->shouldOpenUrlInNewTab() ? '_blank' : null"
-                    :current="$item->isActive()"
-                    :badge="$item->getBadge()"
-                >
+                <x-flux::navbar.item :icon="$resolveItemIcon($item)" :href="$item->getUrl()" :target="$item->shouldOpenUrlInNewTab() ? '_blank' : null" :current="$item->isActive()"
+                    :badge="$item->getBadge()">
                     {{ $item->getLabel() }}
                 </x-flux::navbar.item>
             @endif

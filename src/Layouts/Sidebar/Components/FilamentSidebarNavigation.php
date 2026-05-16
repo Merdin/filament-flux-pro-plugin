@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Merdin\Filament\Plugins\Flux\Pro\Layouts\Header\Components;
+namespace Merdin\Filament\Plugins\Flux\Pro\Layouts\Sidebar\Components;
 
 use Filament\Support\Components\ViewComponent;
 use Merdin\Filament\Plugins\Flux\Pro\Layouts\Header\Concerns\HasFilamentNavigation;
-use Merdin\Filament\Plugins\Flux\Pro\Layouts\Header\Concerns\HeaderComponent;
+use Merdin\Filament\Plugins\Flux\Pro\Layouts\Sidebar\Concerns\SidebarComponent;
 
-class FilamentNavigation extends ViewComponent implements HeaderComponent
+class FilamentSidebarNavigation extends ViewComponent implements SidebarComponent
 {
     use HasFilamentNavigation;
 
-    protected string $viewIdentifier = 'filamentNavigation';
+    protected string $viewIdentifier = 'filamentSidebarNavigation';
 
-    protected string $view = 'filament-flux-pro::layouts.header.components.filament-navigation';
+    protected string $view = 'filament-flux-pro::layouts.sidebar.components.filament-sidebar-navigation';
 
     final public function __construct()
     {
