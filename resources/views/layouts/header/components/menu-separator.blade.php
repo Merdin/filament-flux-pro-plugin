@@ -1,1 +1,1 @@
-<flux:menu.separator />
+<x-flux::menu.separator />

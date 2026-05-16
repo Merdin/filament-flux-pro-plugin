@@ -1,1 +1,1 @@
-<flux:separator vertical variant="subtle" class="my-2" />
+<x-flux::separator vertical variant="subtle" class="my-2" />

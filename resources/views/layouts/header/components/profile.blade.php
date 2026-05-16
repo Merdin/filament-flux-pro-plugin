@@ -1,1 +1,1 @@
-<flux:profile :avatar="$getAvatar()" :name="$getName()" />
+<x-flux::profile :avatar="$getAvatar()" :name="$getName()" />

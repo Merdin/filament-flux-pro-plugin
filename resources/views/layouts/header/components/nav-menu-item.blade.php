@@ -1,1 +1,1 @@
-<flux:navmenu.item :href="$getHref()">{{ $getLabel() }}</flux:navmenu.item>
+<x-flux::navmenu.item :href="$getHref()">{{ $getLabel() }}</x-flux::navmenu.item>

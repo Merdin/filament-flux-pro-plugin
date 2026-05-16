@@ -1,9 +1,9 @@
-<flux:dropdown :position="$getPosition()" :align="$getAlign()">
+<x-flux::dropdown :position="$getPosition()" :align="$getAlign()">
     {!! $getTrigger()?->toHtml() !!}
 
-    <flux:menu>
+    <x-flux::menu>
         @foreach ($getItems() as $item)
             {!! $item->toHtml() !!}
         @endforeach
-    </flux:menu>
-</flux:dropdown>
+    </x-flux::menu>
+</x-flux::dropdown>

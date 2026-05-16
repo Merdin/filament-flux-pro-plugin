@@ -1,9 +1,3 @@
-<flux:navbar.item
-    {{ $getExtraAttributeBag() }}
-    :icon="$getIcon()"
-    :href="$getHref()"
-    :current="$getCurrent()"
-    :badge="$getBadge()"
->
+<x-flux::navbar.item :icon="$getIcon()" :href="$getHref()" :current="$getCurrent()" :badge="$getBadge()" :class="$getExtraAttributeBag()->get('class')">
     {{ $getLabel() }}
-</flux:navbar.item>
+</x-flux::navbar.item>

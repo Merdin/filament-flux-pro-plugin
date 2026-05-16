@@ -1,11 +1,17 @@
-<flux:dropdown {{ $getExtraAttributeBag() }}>
-    <flux:navbar.item @if($getTrailingIcon()) icon:trailing="{{ $getTrailingIcon() }}" @endif>
-        {{ $getLabel() }}
-    </flux:navbar.item>
+<x-flux::dropdown :class="$getExtraAttributeBag()->get('class')">
+    @if ($getTrailingIcon())
+        <x-flux::navbar.item icon:trailing="{{ $getTrailingIcon() }}">
+            {{ $getLabel() }}
+        </x-flux::navbar.item>
+    @else
+        <x-flux::navbar.item>
+            {{ $getLabel() }}
+        </x-flux::navbar.item>
+    @endif
 
-    <flux:navmenu>
+    <x-flux::navmenu>
         @foreach ($getItems() as $item)
             {!! $item->toHtml() !!}
         @endforeach
-    </flux:navmenu>
-</flux:dropdown>
+    </x-flux::navmenu>
+</x-flux::dropdown>

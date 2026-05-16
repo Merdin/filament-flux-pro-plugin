@@ -6,6 +6,8 @@ use Filament\Support\Assets\Asset;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
 use Illuminate\Support\Facades\Blade;
+use Livewire\Livewire;
+use Merdin\Filament\Plugins\Flux\Pro\Layouts\Header\Header;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -25,6 +27,8 @@ class FilamentFluxProServiceProvider extends PackageServiceProvider
 
     public function packageBooted(): void
     {
+        Livewire::component('filament-flux-pro::header', Header::class);
+
         FilamentView::registerRenderHook(
             PanelsRenderHook::BODY_END,
             fn (): string => Blade::render('@fluxScripts'),
