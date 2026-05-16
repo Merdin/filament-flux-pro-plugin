@@ -15,8 +15,10 @@ use Filament\Tables\TablesServiceProvider;
 use Filament\Widgets\WidgetsServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Foundation\Testing\LazilyRefreshDatabase;
+use Flux\FluxServiceProvider;
+use FluxPro\FluxProServiceProvider;
 use Livewire\LivewireServiceProvider;
-use Merdin\Filament\Plugins\Flux\Pro\FluxProServiceProvider;
+use Merdin\Filament\Plugins\Flux\Pro\FluxProServiceProvider as FilamentFluxProServiceProvider;
 use Orchestra\Testbench\Concerns\WithWorkbench;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RyanChandler\BladeCaptureDirective\BladeCaptureDirectiveServiceProvider;
@@ -51,7 +53,9 @@ class TestCase extends Orchestra
             SupportServiceProvider::class,
             TablesServiceProvider::class,
             WidgetsServiceProvider::class,
+            FluxServiceProvider::class,
             FluxProServiceProvider::class,
+            FilamentFluxProServiceProvider::classπ
         ];
 
         sort($providers);
