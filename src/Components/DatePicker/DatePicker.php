@@ -7,11 +7,15 @@ namespace Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker;
 use Carbon\CarbonInterface;
 use Closure;
 use Filament\Forms\Components\Field;
+use Filament\Schemas\Components\StateCasts\Contracts\StateCast;
+use Filament\Schemas\Components\StateCasts\DateTimeStateCast;
+use Filament\Support\Facades\FilamentTimezone;
 use Flux\DateRange;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Mode;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Type;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Helpers\Presets\Builder as PresetBuilder;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Helpers\Presets\Preset;
+use Override;
 
 class DatePicker extends Field
 {
@@ -66,7 +70,59 @@ class DatePicker extends Field
     protected CarbonInterface | Closure | null $afterDate = null;
     protected string | Closure | null $afterDateErrorMessage = null;
 
+    protected string | Closure | null $timezone = null;
+
+    protected string | Closure | null $format = null;
+
     protected string $view = 'filament-flux-pro::components.date-picker.date-picker';
+
+    #[Override]
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->rule(
+            'date',
+            static fn (DatePicker $component): bool => $component->hasDate(),
+        );
+    }
+
+    /**
+     * @return array<StateCast>
+     */
+    #[Override]
+    public function getDefaultStateCasts(): array
+    {
+        return [
+            ...parent::getDefaultStateCasts(),
+            app(DateTimeStateCast::class, [
+                'format' => $this->getFormat(),
+                'internalFormat' => $this->getInternalFormat(),
+                'timezone' => $this->getTimezone(),
+            ]),
+        ];
+    }
+
+    public function getInternalFormat(): string
+    {
+        return 'Y-m-d';
+    }
+
+    public function getFormat(): string
+    {
+        $format = $this->evaluate($this->format);
+
+        if ($format) {
+            return $format;
+        }
+
+        return 'Y-m-d';
+    }
+
+    public function getTimezone(): string
+    {
+        return $this->evaluate($this->timezone) ?? (config('app.timezone'));
+    }
 
     public function type(Type $type): static
     {
