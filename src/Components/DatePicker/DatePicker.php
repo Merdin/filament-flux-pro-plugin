@@ -63,7 +63,8 @@ class DatePicker extends Field
 
     protected bool $selectableHeader = false;
 
-    protected bool $invalid = false;
+    protected CarbonInterface | Closure | null $afterDate = null;
+    protected string | Closure | null $afterDateErrorMessage = null;
 
     protected string $view = 'filament-flux-pro::components.date-picker.date-picker';
 
@@ -332,14 +333,14 @@ class DatePicker extends Field
     public function getPresets(): string
     {
         if (empty($this->presets)) {
-            $builder = new PresetBuilder;
-            $builder->add(new Preset\Today);
-            $builder->add(new Preset\Yesterday);
-            $builder->add(new Preset\ThisWeek);
-            $builder->add(new Preset\Last7Days);
-            $builder->add(new Preset\ThisMonth);
-            $builder->add(new Preset\YearToDate);
-            $builder->add(new Preset\AllTime);
+            $builder = new PresetBuilder();
+            $builder->add(new Preset\Today());
+            $builder->add(new Preset\Yesterday());
+            $builder->add(new Preset\ThisWeek());
+            $builder->add(new Preset\Last7Days());
+            $builder->add(new Preset\ThisMonth());
+            $builder->add(new Preset\YearToDate());
+            $builder->add(new Preset\AllTime());
 
             $this->presets($builder);
         }
@@ -357,18 +358,6 @@ class DatePicker extends Field
     public function getClearable(): ?bool
     {
         return $this->clearable;
-    }
-
-    public function invalid(bool $condition = true): static
-    {
-        $this->invalid = $condition;
-
-        return $this;
-    }
-
-    public function getInvalid(): bool
-    {
-        return $this->invalid;
     }
 
     public function locale(string $locale): static
