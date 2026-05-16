@@ -37,6 +37,8 @@ class DatePicker extends Field
 
     protected ?int $months = null;
 
+    protected string | Closure | null $placeholder = null;
+
     protected ?string $size = null;
 
     protected ?int $startDay = null;
@@ -209,6 +211,18 @@ class DatePicker extends Field
         }
 
         return $this->months;
+    }
+
+    public function placeholder(string|Closure $placeholder): static
+    {
+        $this->placeholder = $placeholder;
+
+        return $this;
+    }
+
+    public function getPlaceholder(): ?string
+    {
+        return $this->placeholder;
     }
 
     public function size(string $size): static
