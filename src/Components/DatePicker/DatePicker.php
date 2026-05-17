@@ -9,7 +9,6 @@ use Closure;
 use Filament\Forms\Components\Field;
 use Filament\Schemas\Components\StateCasts\Contracts\StateCast;
 use Filament\Schemas\Components\StateCasts\DateTimeStateCast;
-use Filament\Support\Facades\FilamentTimezone;
 use Flux\DateRange;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Mode;
 use Merdin\Filament\Plugins\Flux\Pro\Components\DatePicker\Enums\Type;
@@ -113,7 +112,7 @@ class DatePicker extends Field
         $format = $this->evaluate($this->format);
 
         if ($format) {
-            return $format;
+            return (string) $format;
         }
 
         return 'Y-m-d';
@@ -220,7 +219,6 @@ class DatePicker extends Field
         return $this;
     }
 
-    /** @return array<int, string> */
     public function getUnavailable(): ?string
     {
         return $this->unavailable;
@@ -295,7 +293,7 @@ class DatePicker extends Field
         return $this->size;
     }
 
-    public function startDay(int $dayOfWeek)
+    public function startDay(int $dayOfWeek): static
     {
         $this->startDay = $dayOfWeek;
 
@@ -438,5 +436,30 @@ class DatePicker extends Field
     public function getFixedWeeks(): bool
     {
         return $this->fixedWeeks;
+    }
+
+    public function hasDate(): bool
+    {
+        return $this->mode !== Mode::range;
+    }
+
+    public function afterDate(CarbonInterface | Closure | null $date, string | Closure | null $errorMessage = null): static
+    {
+        $this->afterDate = $date;
+        $this->afterDateErrorMessage = $errorMessage;
+
+        return $this;
+    }
+
+    public function getAfterDate(): ?string
+    {
+        $date = $this->evaluate($this->afterDate);
+
+        return $date instanceof CarbonInterface ? $date->toDateString() : $date;
+    }
+
+    public function getAfterDateErrorMessage(): ?string
+    {
+        return $this->evaluate($this->afterDateErrorMessage);
     }
 }
