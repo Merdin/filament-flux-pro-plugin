@@ -1,0 +1,16 @@
+<x-flux::color-picker
+    :value="$getValue()"
+    :name="$getName()"
+    :format="$getFormat()"
+    :type="$getType()"
+    :placeholder="$getPlaceholder()"
+    :size="$getSize()"
+    :swatches="$getSwatches()"
+    :dropper="$getDropper() ?: null"
+    :clearable="$getClearable() ?: null"
+    :copyable="$getCopyable() ?: null"
+    :label="$getLabel()"
+    :description="$getDescription()"
+    :disabled="$getDisabled() ?: null"
+    :invalid="$getInvalid() ?: null"
+/>
