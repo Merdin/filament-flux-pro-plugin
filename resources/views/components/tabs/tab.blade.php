@@ -4,7 +4,7 @@
     :icon:trailing="$getIconTrailing()"
     :icon:variant="$getIconVariant()"
     :selected="$getSelected() ?: null"
-    :action="$getAction() ?: null"
+    :action="$getIsAction() ?: null"
     :accent="$getAccent() ?: null"
     :size="$getSize()"
     :disabled="$getDisabled() ?: null"

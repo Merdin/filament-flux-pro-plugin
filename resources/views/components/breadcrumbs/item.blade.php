@@ -2,5 +2,5 @@
     :href="$getHref()"
     :icon="$getIcon()"
     :icon:variant="$getIconVariant()"
-    :separator="$getSeparator()"
+    :separator="$getItemSeparator()"
 >{{ $getText() }}</flux:breadcrumbs.item>

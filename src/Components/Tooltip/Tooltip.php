@@ -87,14 +87,14 @@ class Tooltip extends Component
         return (bool) $this->evaluate($this->disabled);
     }
 
-    public function gap(int | Closure | null $gap): static
+    public function triggerGap(int | Closure | null $gap): static
     {
         $this->gap = $gap;
 
         return $this;
     }
 
-    public function getGap(): ?int
+    public function getTriggerGap(): ?int
     {
         return $this->evaluate($this->gap);
     }

@@ -23,7 +23,7 @@ class Tab extends Component
 
     protected bool | Closure $selected = false;
 
-    protected bool | Closure $action = false;
+    protected bool | Closure $isAction = false;
 
     protected bool | Closure $accent = false;
 
@@ -118,16 +118,16 @@ class Tab extends Component
         return (bool) $this->evaluate($this->selected);
     }
 
-    public function action(bool | Closure $condition = true): static
+    public function asAction(bool | Closure $condition = true): static
     {
-        $this->action = $condition;
+        $this->isAction = $condition;
 
         return $this;
     }
 
-    public function getAction(): bool
+    public function getIsAction(): bool
     {
-        return (bool) $this->evaluate($this->action);
+        return (bool) $this->evaluate($this->isAction);
     }
 
     public function accent(bool | Closure $condition = true): static

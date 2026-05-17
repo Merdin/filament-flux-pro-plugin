@@ -84,14 +84,14 @@ class BreadcrumbsItem extends Component
         return $this->evaluate($this->iconVariant);
     }
 
-    public function separator(string | Closure | null $separator): static
+    public function itemSeparator(string | Closure | null $separator): static
     {
         $this->separator = $separator;
 
         return $this;
     }
 
-    public function getSeparator(): ?string
+    public function getItemSeparator(): ?string
     {
         return $this->evaluate($this->separator);
     }
