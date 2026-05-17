@@ -1,0 +1,18 @@
+<flux:button
+    :as="$getElement()"
+    :href="$getHref()"
+    :type="$getType()"
+    :variant="$getVariant()"
+    :size="$getSize()"
+    :icon="$getIcon()"
+    :icon:variant="$getIconVariant()"
+    :icon:trailing="$getIconTrailing()"
+    :square="$getSquare() ?: null"
+    :align="$getAlign()"
+    :inset="$getInset()"
+    :loading="$getLoading()"
+    :tooltip="$getTooltip()"
+    :tooltip:position="$getTooltipPosition()"
+    :tooltip:kbd="$getTooltipKbd()"
+    :kbd="$getKbd()"
+>{{ $getText() }}</flux:button>
