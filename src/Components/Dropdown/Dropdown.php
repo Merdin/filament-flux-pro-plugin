@@ -19,7 +19,11 @@ class Dropdown extends Component
 
     protected int | Closure | null $gap = null;
 
-    final public function __construct() {}
+    protected bool | Closure $hover = false;
+
+    final public function __construct()
+    {
+    }
 
     public static function make(): static
     {
