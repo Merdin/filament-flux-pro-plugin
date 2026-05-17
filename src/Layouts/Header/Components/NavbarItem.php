@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Merdin\Filament\Plugins\Flux\Pro\Layouts\Header\Components;
 
+use Closure;
 use Filament\Support\Components\ViewComponent;
 use Filament\Support\Concerns;
 use Merdin\Filament\Plugins\Flux\Pro\Layouts\Header\Concerns\NavbarComponent;
@@ -20,7 +21,7 @@ class NavbarItem extends ViewComponent implements NavbarComponent
 
     protected ?string $icon = null;
 
-    protected ?string $href = null;
+    protected string|Closure|null $href = null;
 
     protected bool $current = false;
 
@@ -66,7 +67,7 @@ class NavbarItem extends ViewComponent implements NavbarComponent
         return $this->icon;
     }
 
-    public function href(?string $href): static
+    public function href(string|Closure|null $href): static
     {
         $this->href = $href;
 
@@ -75,7 +76,7 @@ class NavbarItem extends ViewComponent implements NavbarComponent
 
     public function getHref(): ?string
     {
-        return $this->href;
+        return $this->href instanceof Closure ? ($this->href)() : $this->href;
     }
 
     public function current(bool $condition = true): static
