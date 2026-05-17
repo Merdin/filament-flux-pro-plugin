@@ -1,0 +1,37 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Merdin\Filament\Plugins\Flux\Pro\Components\Skeleton;
+
+use Closure;
+use Filament\Schemas\Components\Component;
+
+class Skeleton extends Component
+{
+    protected string $view = 'filament-flux-pro::components.skeleton.skeleton';
+
+    protected string | Closure | null $animate = null;
+
+    final public function __construct() {}
+
+    public static function make(): static
+    {
+        $static = app(static::class);
+        $static->configure();
+
+        return $static;
+    }
+
+    public function animate(string | Closure | null $animate): static
+    {
+        $this->animate = $animate;
+
+        return $this;
+    }
+
+    public function getAnimate(): ?string
+    {
+        return $this->evaluate($this->animate);
+    }
+}
