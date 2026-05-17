@@ -24,12 +24,21 @@ class FilamentFluxProServiceProvider extends PackageServiceProvider
             ->hasViews('filament-flux-pro');
     }
 
-    public function packageRegistered(): void {}
+    public function packageRegistered(): void
+    {
+    }
 
     public function packageBooted(): void
     {
-        Livewire::component('filament-flux-pro::header', Header::class);
-        Livewire::component('filament-flux-pro::sidebar', Sidebar::class);
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::BODY_START,
+            fn () => Livewire::component('filament-flux-pro::header', Header::class)
+        );
+
+        FilamentView::registerRenderHook(
+            PanelsRenderHook::BODY_START,
+            fn () => Livewire::component('filament-flux-pro::sidebar', Sidebar::class)
+        );
 
         FilamentView::registerRenderHook(
             PanelsRenderHook::BODY_END,
