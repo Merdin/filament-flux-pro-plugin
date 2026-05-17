@@ -22,7 +22,7 @@ class Dropdown extends ViewComponent implements HeaderComponent
     protected ?ViewComponent $trigger = null;
 
     /** @var array<int, MenuComponent>|Closure|null */
-    protected array|Closure|null $items = null;
+    protected array | Closure | null $items = null;
 
     final public function __construct()
     {
@@ -71,7 +71,7 @@ class Dropdown extends ViewComponent implements HeaderComponent
     }
 
     /** @param array<int, MenuComponent>|Closure $items */
-    public function items(array|Closure $items): static
+    public function items(array | Closure $items): static
     {
         $this->items = $items;
 

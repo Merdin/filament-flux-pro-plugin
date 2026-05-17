@@ -15,7 +15,7 @@ class MenuRadioGroup extends ViewComponent implements MenuComponent
     protected string $view = 'filament-flux-pro::layouts.header.components.menu-radio-group';
 
     /** @var array<int, MenuRadio>|Closure|null */
-    protected array|Closure|null $radios = null;
+    protected array | Closure | null $radios = null;
 
     final public function __construct()
     {
@@ -28,7 +28,7 @@ class MenuRadioGroup extends ViewComponent implements MenuComponent
     }
 
     /** @param array<int, MenuRadio>|Closure $radios */
-    public function radios(array|Closure $radios): static
+    public function radios(array | Closure $radios): static
     {
         $this->radios = $radios;
 

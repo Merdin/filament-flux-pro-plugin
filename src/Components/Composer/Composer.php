@@ -12,9 +12,13 @@ class Composer extends Component
     protected string $view = 'filament-flux-pro::components.composer.composer';
 
     const INPUT_SCHEMA_KEY = 'input';
+
     const HEADER_SCHEMA_KEY = 'header';
+
     const FOOTER_SCHEMA_KEY = 'footer';
+
     const ACTIONS_LEADING_SCHEMA_KEY = 'actionsLeading';
+
     const ACTIONS_TRAILING_SCHEMA_KEY = 'actionsTrailing';
 
     protected string | Closure | null $value = null;

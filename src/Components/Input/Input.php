@@ -12,7 +12,9 @@ class Input extends Field
     protected string $view = 'filament-flux-pro::components.input.input';
 
     const ICON_SCHEMA_KEY = 'icon';
+
     const ICON_LEADING_SCHEMA_KEY = 'iconLeading';
+
     const ICON_TRAILING_SCHEMA_KEY = 'iconTrailing';
 
     protected string | Closure | null $type = null;

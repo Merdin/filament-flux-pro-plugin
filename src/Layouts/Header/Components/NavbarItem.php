@@ -21,11 +21,11 @@ class NavbarItem extends ViewComponent implements NavbarComponent
 
     protected ?string $icon = null;
 
-    protected string|Closure|null $href = null;
+    protected string | Closure | null $href = null;
 
     protected bool $current = false;
 
-    protected string|int|null $badge = null;
+    protected string | int | null $badge = null;
 
     final public function __construct()
     {
@@ -67,7 +67,7 @@ class NavbarItem extends ViewComponent implements NavbarComponent
         return $this->icon;
     }
 
-    public function href(string|Closure|null $href): static
+    public function href(string | Closure | null $href): static
     {
         $this->href = $href;
 
@@ -91,14 +91,14 @@ class NavbarItem extends ViewComponent implements NavbarComponent
         return $this->current;
     }
 
-    public function badge(string|int|null $badge): static
+    public function badge(string | int | null $badge): static
     {
         $this->badge = $badge;
 
         return $this;
     }
 
-    public function getBadge(): string|int|null
+    public function getBadge(): string | int | null
     {
         return $this->badge;
     }

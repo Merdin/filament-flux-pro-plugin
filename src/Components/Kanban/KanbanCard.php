@@ -12,6 +12,7 @@ class KanbanCard extends Component
     protected string $view = 'filament-flux-pro::components.kanban.kanban-card';
 
     const HEADER_SCHEMA_KEY = 'header';
+
     const FOOTER_SCHEMA_KEY = 'footer';
 
     protected string | Closure | null $heading = null;

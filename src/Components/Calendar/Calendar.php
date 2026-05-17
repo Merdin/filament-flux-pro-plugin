@@ -203,7 +203,7 @@ class Calendar extends Field
         return $this->navigation(false);
     }
 
-    public function getNavigation(): bool | null
+    public function getNavigation(): ?bool
     {
         return $this->evaluate($this->navigation);
     }

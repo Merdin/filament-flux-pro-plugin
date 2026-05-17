@@ -21,9 +21,7 @@ class Dropdown extends Component
 
     protected bool | Closure $hover = false;
 
-    final public function __construct()
-    {
-    }
+    final public function __construct() {}
 
     public static function make(): static
     {

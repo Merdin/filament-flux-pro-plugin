@@ -22,7 +22,7 @@ class NavbarDropdown extends ViewComponent implements NavbarComponent
     protected ?string $trailingIcon = null;
 
     /** @var array<int, NavMenuItem>|Closure|null */
-    protected array|Closure|null $items = null;
+    protected array | Closure | null $items = null;
 
     final public function __construct()
     {
@@ -65,7 +65,7 @@ class NavbarDropdown extends ViewComponent implements NavbarComponent
     }
 
     /** @param array<int, NavMenuItem>|Closure $items */
-    public function items(array|Closure $items): static
+    public function items(array | Closure $items): static
     {
         $this->items = $items;
 

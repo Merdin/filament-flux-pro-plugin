@@ -18,7 +18,7 @@ trait HasFilamentNavigation
     }
 
     /** Strip Filament's blade-icons prefix so Flux can resolve the icon name. */
-    public function resolveIcon(string|BackedEnum|Htmlable|null $icon): ?string
+    public function resolveIcon(string | BackedEnum | Htmlable | null $icon): ?string
     {
         if ($icon instanceof Htmlable) {
             return null;

@@ -21,7 +21,7 @@ class SidebarItem extends ViewComponent implements SidebarNavComponent
 
     protected bool $current = false;
 
-    protected string|int|null $badge = null;
+    protected string | int | null $badge = null;
 
     final public function __construct()
     {
@@ -87,14 +87,14 @@ class SidebarItem extends ViewComponent implements SidebarNavComponent
         return $this->current;
     }
 
-    public function badge(string|int|null $badge): static
+    public function badge(string | int | null $badge): static
     {
         $this->badge = $badge;
 
         return $this;
     }
 
-    public function getBadge(): string|int|null
+    public function getBadge(): string | int | null
     {
         return $this->badge;
     }

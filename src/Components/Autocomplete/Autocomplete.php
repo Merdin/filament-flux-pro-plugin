@@ -142,6 +142,7 @@ class Autocomplete extends Field
         foreach (explode('.', $relationshipName) as $nestedRelationshipName) {
             if (! $record->isRelation($nestedRelationshipName)) {
                 $relationship = null;
+
                 break;
             }
 

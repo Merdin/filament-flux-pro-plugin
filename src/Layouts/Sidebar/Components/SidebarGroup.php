@@ -21,7 +21,7 @@ class SidebarGroup extends ViewComponent implements SidebarNavComponent
     protected ?string $class = null;
 
     /** @var array<int, SidebarItem>|Closure|null */
-    protected array|Closure|null $items = null;
+    protected array | Closure | null $items = null;
 
     final public function __construct()
     {
@@ -76,7 +76,7 @@ class SidebarGroup extends ViewComponent implements SidebarNavComponent
     }
 
     /** @param array<int, SidebarItem>|Closure $items */
-    public function items(array|Closure $items): static
+    public function items(array | Closure $items): static
     {
         $this->items = $items;
 

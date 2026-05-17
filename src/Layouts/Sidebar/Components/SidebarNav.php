@@ -16,7 +16,7 @@ class SidebarNav extends ViewComponent implements SidebarComponent
     protected string $view = 'filament-flux-pro::layouts.sidebar.components.sidebar-nav';
 
     /** @var array<int, SidebarNavComponent>|Closure|null */
-    protected array|Closure|null $items = null;
+    protected array | Closure | null $items = null;
 
     final public function __construct()
     {
@@ -29,7 +29,7 @@ class SidebarNav extends ViewComponent implements SidebarComponent
     }
 
     /** @param array<int, SidebarNavComponent>|Closure $items */
-    public function items(array|Closure $items): static
+    public function items(array | Closure $items): static
     {
         $this->items = $items;
 

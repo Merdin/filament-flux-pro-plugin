@@ -5,7 +5,6 @@ namespace Merdin\Filament\Plugins\Flux\Pro;
 use Filament\Support\Assets\Asset;
 use Filament\Support\Facades\FilamentView;
 use Filament\View\PanelsRenderHook;
-use Illuminate\Support\Facades\Blade;
 use Livewire\Livewire;
 use Merdin\Filament\Plugins\Flux\Pro\Layouts\Header\Header;
 use Merdin\Filament\Plugins\Flux\Pro\Layouts\Sidebar\Sidebar;
@@ -24,9 +23,7 @@ class FilamentFluxProServiceProvider extends PackageServiceProvider
             ->hasViews('filament-flux-pro');
     }
 
-    public function packageRegistered(): void
-    {
-    }
+    public function packageRegistered(): void {}
 
     public function packageBooted(): void
     {

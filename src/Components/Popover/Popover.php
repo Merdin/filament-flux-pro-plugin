@@ -20,4 +20,3 @@ class Popover extends Component
         return $static;
     }
 }
-

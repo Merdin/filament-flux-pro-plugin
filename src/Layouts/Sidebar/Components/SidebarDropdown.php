@@ -25,7 +25,7 @@ class SidebarDropdown extends ViewComponent implements SidebarComponent
     protected ?SidebarProfile $profile = null;
 
     /** @var array<int, MenuComponent>|Closure|null */
-    protected array|Closure|null $items = null;
+    protected array | Closure | null $items = null;
 
     final public function __construct()
     {
@@ -74,7 +74,7 @@ class SidebarDropdown extends ViewComponent implements SidebarComponent
     }
 
     /** @param array<int, MenuComponent>|Closure $items */
-    public function items(array|Closure $items): static
+    public function items(array | Closure $items): static
     {
         $this->items = $items;
 

@@ -18,7 +18,7 @@ class MenuItem extends ViewComponent implements MenuComponent
 
     protected ?string $icon = null;
 
-    protected string|Closure|null $href = null;
+    protected string | Closure | null $href = null;
 
     final public function __construct()
     {
@@ -60,7 +60,7 @@ class MenuItem extends ViewComponent implements MenuComponent
         return $this->icon;
     }
 
-    public function href(string|Closure|null $href): static
+    public function href(string | Closure | null $href): static
     {
         $this->href = $href;
 

@@ -13,6 +13,7 @@ class Callout extends Component implements Htmlable
     protected string $view = 'filament-flux-pro::components.callout.callout';
 
     const ACTIONS_SCHEMA_KEY = 'actions';
+
     const CONTROLS_SCHEMA_KEY = 'controls';
 
     protected string | Closure | null $icon = null;
