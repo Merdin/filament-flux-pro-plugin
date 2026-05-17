@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Merdin\Filament\Plugins\Flux\Pro\Layouts\Header\Components;
 
+use Closure;
 use Filament\Support\Components\ViewComponent;
 use Merdin\Filament\Plugins\Flux\Pro\Layouts\Header\Concerns\MenuComponent;
 
@@ -17,7 +18,7 @@ class MenuItem extends ViewComponent implements MenuComponent
 
     protected ?string $icon = null;
 
-    protected ?string $href = null;
+    protected string|Closure|null $href = null;
 
     final public function __construct()
     {
@@ -59,7 +60,7 @@ class MenuItem extends ViewComponent implements MenuComponent
         return $this->icon;
     }
 
-    public function href(?string $href): static
+    public function href(string|Closure|null $href): static
     {
         $this->href = $href;
 
@@ -68,6 +69,6 @@ class MenuItem extends ViewComponent implements MenuComponent
 
     public function getHref(): ?string
     {
-        return $this->href;
+        return $this->href instanceof Closure ? ($this->href)() : $this->href;
     }
 }

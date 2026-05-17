@@ -1,4 +1,4 @@
-<div class="hidden lg:contents">
+<div class="contents">
     @foreach ($getNavigation() as $group)
         @php
             $groupLabel = $group->getLabel();
@@ -19,8 +19,8 @@
                                 $childItems = $item->getChildItems();
                             @endphp
 
-                            <x-flux::navmenu.item :icon="$resolveItemIcon($item)" :href="$item->getUrl()" :target="$item->shouldOpenUrlInNewTab() ? '_blank' : null" :current="$item->isActive()"
-                                :badge="$item->getBadge()">
+                            <x-flux::navmenu.item :icon="$resolveItemIcon($item)" :href="$item->getUrl()" :target="$item->shouldOpenUrlInNewTab() ? '_blank' : null"
+                                :current="$item->isActive()" :badge="$item->getBadge()">
                                 {{ $item->getLabel() }}
                             </x-flux::navmenu.item>
 
