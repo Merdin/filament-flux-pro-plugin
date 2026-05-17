@@ -40,11 +40,6 @@ class FilamentFluxProServiceProvider extends PackageServiceProvider
             fn () => Livewire::component('filament-flux-pro::sidebar', Sidebar::class)
         );
 
-        FilamentView::registerRenderHook(
-            PanelsRenderHook::BODY_END,
-            fn (): string => Blade::render('@fluxScripts'),
-        );
-
         // Testing
         // Testable::mixin(new TestsFluxPro);
     }
