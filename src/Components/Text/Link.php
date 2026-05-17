@@ -7,19 +7,19 @@ namespace Merdin\Filament\Plugins\Flux\Pro\Components\Text;
 use Closure;
 use Filament\Schemas\Components\Component;
 
-class Text extends Component
+class Link extends Component
 {
-    protected string $view = 'filament-flux-pro::components.text.text';
+    protected string $view = 'filament-flux-pro::components.text.link';
 
     protected string | Closure | null $text = null;
 
-    protected string | Closure | null $size = null;
+    protected string | Closure | null $href = null;
 
     protected string | Closure | null $variant = null;
 
-    protected string | Closure | null $color = null;
+    protected bool | Closure $external = false;
 
-    protected bool | Closure $inline = false;
+    protected string | Closure | null $as = null;
 
     final public function __construct(string | Closure | null $text = null)
     {
@@ -48,16 +48,16 @@ class Text extends Component
         return $this->evaluate($this->text);
     }
 
-    public function size(string | Closure | null $size): static
+    public function href(string | Closure | null $href): static
     {
-        $this->size = $size;
+        $this->href = $href;
 
         return $this;
     }
 
-    public function getSize(): ?string
+    public function getHref(): ?string
     {
-        return $this->evaluate($this->size);
+        return $this->evaluate($this->href);
     }
 
     public function variant(string | Closure | null $variant): static
@@ -72,27 +72,27 @@ class Text extends Component
         return $this->evaluate($this->variant);
     }
 
-    public function color(string | Closure | null $color): static
+    public function external(bool | Closure $condition = true): static
     {
-        $this->color = $color;
+        $this->external = $condition;
 
         return $this;
     }
 
-    public function getColor(): ?string
+    public function getExternal(): bool
     {
-        return $this->evaluate($this->color);
+        return (bool) $this->evaluate($this->external);
     }
 
-    public function inline(bool | Closure $condition = true): static
+    public function as(string | Closure | null $element): static
     {
-        $this->inline = $condition;
+        $this->as = $element;
 
         return $this;
     }
 
-    public function getInline(): bool
+    public function getAs(): ?string
     {
-        return (bool) $this->evaluate($this->inline);
+        return $this->evaluate($this->as);
     }
 }
